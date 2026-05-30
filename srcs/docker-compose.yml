@@ -21,6 +21,19 @@ services:
       - "9000"
     restart: unless-stopped
 
+  nginx:
+    build:
+      context: ./requirements/nginx
+    env_file:
+      - .env
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www/inception
+    ports:
+      - "443:443"
+    restart: unless-stopped
+
 volumes:
   mariadb_data:
   wordpress_data:
