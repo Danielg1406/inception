@@ -1,5 +1,8 @@
 #!/bin/bash
 
+mkdir -p /run/mysqld /var/log/mysql
+chown -R mysql:mysql /run/mysqld /var/lib/mysql /var/log/mysql
+
 service mariadb start
 
 mariadb -v -u root << EOF
