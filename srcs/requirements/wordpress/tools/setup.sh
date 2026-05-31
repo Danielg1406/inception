@@ -7,8 +7,11 @@ wp_cli() {
 }
 
 if [ ! -f "/var/www/inception/wp-config.php" ]; then
-  mv /tmp/wp-config.php /var/www/inception/
+  install -o www-data -g www-data -m 644 /tmp/wp-config.php /var/www/inception/wp-config.php
 fi
+
+chown -R www-data:www-data /var/www/inception/
+chmod 644 /var/www/inception/wp-config.php
 
 sleep 10
 
