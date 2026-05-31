@@ -37,5 +37,8 @@ then
 fi;
 
 wp_cli theme install raft --activate 
+chown -R www-data:www-data /var/www/inception/
+find /var/www/inception -type d -exec chmod 755 {} \;
+find /var/www/inception -type f -exec chmod 644 {} \;
 
 exec $@
