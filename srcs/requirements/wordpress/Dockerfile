@@ -1,17 +1,17 @@
 FROM	debian:bookworm-slim
 
-ARG PHPPATH=/etc/php/7.4/fpm
+ARG PHPPATH=/etc/php/8.2/fpm
 
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y \
 	ca-certificates \
-	php7.4-fpm \
-	php7.4-mysql \
-	php7.4-cli \
+	php8.2-fpm \
+	php8.2-mysql \
+	php8.2-cli \
 	wget \
 	tar && \
 	rm -rf /var/lib/apt/lists/*
 
-RUN service php7.4-fpm stop || true
+RUN service php8.2-fpm stop || true
 
 COPY conf/www.conf ${PHPPATH}/pool.d/
 
