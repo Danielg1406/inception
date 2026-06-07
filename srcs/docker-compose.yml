@@ -4,6 +4,9 @@ services:
       context: ./requirements/mariadb
     env_file:
       - .env
+    secrets:
+      - db_password
+      - db_root_password
     volumes:
       - mariadb_data:/var/lib/mysql
     restart: unless-stopped
@@ -15,6 +18,9 @@ services:
       - .env
     depends_on:
       - mariadb
+    secrets:
+      - db_password
+      - credentials
     volumes:
       - wordpress_data:/var/www/inception
     expose:
@@ -47,3 +53,11 @@ volumes:
       type: none
       o: bind
       device: ${HOME}/data/wordpress_files
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+  credentials:
+    file: ./secrets/credentials.txt

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -eu
+
+DB_PASSWORD=$(cat /run/secrets/db_password)
+DB_PASS_ROOT=$(cat /run/secrets/db_root_password)
+
 mkdir -p /run/mysqld /var/log/mysql
 chown -R mysql:mysql /run/mysqld /var/lib/mysql /var/log/mysql
 

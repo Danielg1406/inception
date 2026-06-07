@@ -1,5 +1,14 @@
 #!/bin/bash
 
+set -eu
+
+DB_PASSWORD=$(cat /run/secrets/db_password)
+set -a
+. /run/secrets/credentials
+set +a
+
+export DB_PASSWORD
+
 chown -R www-data:www-data /var/www/inception/
 
 wp_cli() {
