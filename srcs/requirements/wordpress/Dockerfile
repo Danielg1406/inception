@@ -35,4 +35,6 @@ COPY tools/setup.sh /bin/
 
 RUN chmod +x /bin/setup.sh
 
+EXPOSE 9000
+
 CMD ["setup.sh", "php-fpm8.2", "--nodaemonize"]

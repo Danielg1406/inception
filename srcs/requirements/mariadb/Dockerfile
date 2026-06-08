@@ -10,6 +10,7 @@ COPY	tools/setup.sh /bin/
 
 RUN	chmod +x /bin/setup.sh
 
+EXPOSE	3306
 
 HEALTHCHECK --start-period=5m \
   CMD mariadb -e 'SELECT @@datadir;' || exit 1
