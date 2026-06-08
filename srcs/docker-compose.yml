@@ -1,5 +1,6 @@
 services:
   mariadb:
+    image: mariadb
     build:
       context: ./requirements/mariadb
     env_file:
@@ -9,9 +10,12 @@ services:
       - db_root_password
     volumes:
       - mariadb_data:/var/lib/mysql
+    networks:
+      - inception
     restart: unless-stopped
 
   wordpress:
+    image: wordpress
     build:
       context: ./requirements/wordpress
     env_file:
@@ -23,11 +27,14 @@ services:
       - credentials
     volumes:
       - wordpress_data:/var/www/inception
+    networks:
+      - inception
     expose:
       - "9000"
     restart: unless-stopped
 
   nginx:
+    image: nginx
     build:
       context: ./requirements/nginx
     env_file:
@@ -38,7 +45,13 @@ services:
       - wordpress_data:/var/www/inception
     ports:
       - "443:443"
+    networks:
+      - inception
     restart: unless-stopped
+
+networks:
+  inception:
+    driver: bridge
 
 volumes:
   mariadb_data:

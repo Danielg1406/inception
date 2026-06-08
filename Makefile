@@ -13,6 +13,9 @@ DOCKER_COMPOSE= docker compose -f $(COMPOSE)
 all: up
 
 secrets:
+	@if [ ! -f "$(SRCS)/.env" ]; then \
+		cp "$(SRCS)/.env.example" "$(SRCS)/.env"; \
+	fi
 	@mkdir -p $(SECRETS_DIR)
 	@for secret in $(SECRET_NAMES); do \
 		if [ ! -f "$(SECRETS_DIR)/$$secret.txt" ]; then \
