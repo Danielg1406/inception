@@ -12,6 +12,8 @@ services:
       - mariadb_data:/var/lib/mysql
     networks:
       - inception
+    expose:
+      - "3306"
     restart: unless-stopped
 
   wordpress:
