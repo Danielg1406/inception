@@ -55,18 +55,40 @@ make fclean
 ### Project structure:
 ```
 inception/
-├── secrets/                
-└── srcs/              
-    ├── .env.example
-    ├── docker-compose.yml
-    └── requirements/
-        ├── mariadb/
-        ├── nginx/
-        └── wordpress/
-├── .gitginore
 ├── DEV_DOC.md
+├── evaluation.txt
 ├── Makefile
 ├── README.md
+├── secrets
+│   ├── credentials.example
+│   ├── credentials.txt
+│   ├── db_password.example
+│   ├── db_password.txt
+│   ├── db_root_password.example
+│   └── db_root_password.txt
+├── srcs
+│   ├── docker-compose.yml
+│   └── requirements
+│       ├── mariadb
+│       │   ├── conf
+│       │   │   └── 50-server.cnf
+│       │   ├── Dockerfile
+│       │   └── tools
+│       │       └── setup.sh
+│       ├── nginx
+│       │   ├── conf
+│       │   │   ├── nginx.conf
+│       │   │   └── server.conf
+│       │   ├── Dockerfile
+│       │   └── tools
+│       │       └── entrypoint.sh
+│       └── wordpress
+│           ├── conf
+│           │   ├── wp-config.php
+│           │   └── www.conf
+│           ├── Dockerfile
+│           └── tools
+│               └── setup.sh
 └── USER_DOC.md
 ```
 
