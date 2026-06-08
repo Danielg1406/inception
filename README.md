@@ -11,19 +11,10 @@ Inception aims to broaden the knowledge of system administration by using Docker
 
 **Quick start:**
 
-1. Copy the example environment file and edit values:
+1. Copy the .env variables and secrets:
 
 ```bash
-cd srcs/
-cp .env.example .env
-```
-
-2. Create the secret files from the provided examples:
-
-```bash
-cp secrets/db_password.example secrets/db_password.txt
-cp secrets/db_root_password.example secrets/db_root_password.txt
-cp secrets/credentials.example secrets/credentials.txt
+make secrets
 ```
 
 3. Edit `srcs/.env` and set the configuration values only
@@ -92,11 +83,6 @@ inception/
 └── USER_DOC.md
 ```
 
-### Main design choices:
-- Build each service from a local `Dockerfile` so the stack is self-contained and reproducible.
-- Use a dedicated Docker volume per service for persistent data (`mariadb_data`, `wordpress_data`).
-- Keep PHP-FPM and Nginx separated (PHP-FPM listens on port 9000 inside the compose network).
-- Keep runtime configuration in `.env` and sensitive values in Docker secret files mounted at `/run/secrets`.
 
 ### Comparisons
 
@@ -122,7 +108,7 @@ inception/
 - Docker Compose: https://docs.docker.com/compose/
 - WordPress documentation: https://wordpress.org/support/
 - MariaDB documentation: https://mariadb.org/
-
+- Inception guide: https://github.com/waltergcc/42-inception
 ### AI usage disclosure
 AI tools were used to assist only with the creation of documentation. Specifically:
  - Drafted and formatted this `README.md` to meet the project requirements.

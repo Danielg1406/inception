@@ -2,7 +2,7 @@
 
 # User Documentation
 
-## What the stack provides
+### What the stack provides
 
 This project runs a small WordPress stack using Docker. The services are:
 
@@ -12,7 +12,7 @@ This project runs a small WordPress stack using Docker. The services are:
 
 The website is exposed through HTTPS on the host machine, and the database is kept in a persistent Docker volume.
 
-## Start and stop the project
+### Start and stop the project
 
 From the repository root, start the project with:
 
@@ -34,7 +34,12 @@ To remove the containers, images, and volumes used by the stack, run:
 make fclean
 ```
 
-## Access the website and administration panel
+To do down and up at the same time, run:
+```bash
+make re
+```
+
+### Access the website and administration panel
 
 The website is available at the domain configured in `Makefile` and `srcs/.env`.
 
@@ -52,7 +57,7 @@ https://dgomez-a.42.fr/wp-admin
 
 If the domain does not resolve on your machine, check that `/etc/hosts` contains the entry added by `make up`.
 
-## Locate and manage credentials
+### Locate and manage credentials
 
 Sensitive values are not stored in `srcs/.env`.
 
@@ -73,7 +78,7 @@ make secrets
 
 You can then edit the generated `*.txt` files manually.
 
-## Check that the services are running correctly
+### Check that the services are running correctly
 
 Use the following commands to confirm the stack is healthy:
 
